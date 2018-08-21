@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Working With Canvas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas class="myCanvas">
+        <p>Your browser doens't support canvas! Boo hoo!</p>
+    </canvas>
+    <script>
+        var canvas = document.querySelector('.myCanvas');
+        var width = canvas.width = window.innerWidth;
+        var height = canvas.height = window.innerHeight;
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillRect(0, 0, width, height);
+        // playing with images
+        var image = new Image();
+        image.src = 'firefox.png';
+
+        image.onload = function() {
+            // ctx.drawImage(image, 20, 20, 185, 175, 50, 50, 185, 175);
+            ctx.drawImage(image, 50, 50);
+        }
+
+
+
+        function degToRad(degrees) {
+            return degrees * Math.PI / 180;
+        };
+    </script>
+</body>
+
+</html>
