@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Working Wigh Canvas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas class="myCanvas">
+        <p>Your browser doens't support canvas! Boo hoo!</p>
+    </canvas>
+    <script>
+        var canvas = document.querySelector('.myCanvas');
+        var width = canvas.width = window.innerWidth;
+        var height = canvas.height = window.innerHeight;
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillRect(0, 0, width, height);
+
+        // initialize the starting point for a triangle
+        ctx.fillStyle = 'rgb(255,0,0)';
+        ctx.beginPath();
+        ctx.moveTo(50, 50);
+        //draw the triangle
+
+        ctx.lineTo(150, 50);
+        // we know the adjacent on the triangle is 50 (1/2 of 100)
+        // The opposite (not hypotenuse) is Adjacent x tangent of angle (60deg)
+        // Math.tan expects radians, hence the helper function to convert
+        // the angle 60deg to radians
+        var triHeight = 50 * Math.tan(degToRad(60));
+        ctx.lineTo(100, 50 + triHeight);
+        ctx.lineTo(50, 50);
+        ctx.fill();
+
+        // drawing a circle
+        ctx.fillStyle = 'rgb(0,0,255)';
+        ctx.beginPath();
+        // arc() takes 6 parameters: 1 + 2 are the center (X, Y)
+        // 3 is the circle's radius
+        // 4 + 5 are the start and end angles
+        // 6 is whether the cirle is drawn counterclockwise or clockwise (false)
+        ctx.arc(150, 106, 50, degToRad(0), degToRad(360), false);
+        ctx.fill();
+
+        ctx.fillStyle = 'yellow';
+        ctx.beginPath();
+        ctx.arc(200, 106, 50, degToRad(-45), degToRad(45), true);
+        ctx.lineTo(200, 106);
+        ctx.fill();
+
+        function degToRad(degrees) {
+            return degrees * Math.PI / 180;
+        };
+    </script>
+</body>
+
+</html>
