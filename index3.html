@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Working Wigh Canvas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas class="myCanvas">
+        <p>Your browser doens't support canvas! Boo hoo!</p>
+    </canvas>
+    <script>
+        var canvas = document.querySelector('.myCanvas');
+        var width = canvas.width = window.innerWidth;
+        var height = canvas.height = window.innerHeight;
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillRect(0, 0, width, height);
+        // playingwith text
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 1;
+        ctx.font = '30px arial';
+        ctx.strokeText('Canvas text', 50, 50);
+
+        ctx.fillStyle = 'red';
+        ctx.font = '48px georgia';
+        ctx.fillText('Canvas text', 50, 150);
+
+        function degToRad(degrees) {
+            return degrees * Math.PI / 180;
+        };
+    </script>
+</body>
+
+</html>
